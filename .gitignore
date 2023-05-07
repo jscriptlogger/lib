@@ -1,0 +1,9 @@
+/.history
+/node_modules
+/.nyc_output
+*.js
+*.d.ts
+*.map
+tsconfig.tsbuildinfo
+!.eslintrc.js
+/yarn-error.log
