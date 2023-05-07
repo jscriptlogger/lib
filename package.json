@@ -18,10 +18,7 @@
   "dependencies": {
     "autobind-decorator": "^2.4.0",
     "jsbuffer": "0.x",
-    "long": "5.x",
-    "mongodb": "5.x",
-    "uWebSockets.js": "uNetworking/uWebSockets.js#v20.x",
-    "ws": "^8.13.0"
+    "long": "5.x"
   },
   "scripts": {
     "test": "TS_NODE_PROJECT=test/tsconfig.json npx sarg --bail --require ts-node/register \"test/**/*.ts\"",
@@ -29,14 +26,14 @@
     "schema": "yarn run schema:build && yarn run schema:lint",
     "schema:build": "npx jsbuffer schema -o schema.out --extends tsconfig.base.json --indentation-size 2",
     "schema:lint": "npx prettier --write schema.out",
-    "prepublishOnly": "npx tsc -b node src --force"
+    "prepublishOnly": "npx tsc -b node browser src --force"
   },
   "files": [
     "src/**/*.{js,map,d.ts}",
     "schema.out/**/*.{js,map,d.ts}",
     "node/**/*.{js,map,d.ts}"
   ],
-  "version": "0.0.7",
+  "version": "0.0.8",
   "license": "MIT",
-  "name": "@jslogger/server"
+  "name": "js-log-time"
 }
