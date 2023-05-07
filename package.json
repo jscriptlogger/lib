@@ -33,7 +33,7 @@
     "schema.out/**/*.{js,map,d.ts}",
     "node/**/*.{js,map,d.ts}"
   ],
-  "version": "0.0.8",
+  "version": "0.0.9",
   "license": "MIT",
   "name": "js-log-time"
 }
