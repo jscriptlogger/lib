@@ -22,7 +22,7 @@
     "long": "5.x"
   },
   "scripts": {
-    "test": "TS_NODE_PROJECT=test/tsconfig.json npx sarg --require ts-node/register --bail \"test/**/*.ts\"",
+    "test": "TS_NODE_PROJECT=test/tsconfig.json npx sarg --require ts-node/register --bail \"test/**/*.ts\" --ignore \"test/**/*.d.ts\"",
     "test:coverage": "npx nyc yarn test",
     "prepublishOnly": "npx tsc -b node browser src --force"
   },
