@@ -39,7 +39,7 @@
   ],
   "version": "0.0.8",
   "license": "MIT",
-  "name": "logout-js",
+  "name": "@victorqueiroz/logger",
   "browser": {
     "./browser/index.js": "./es/browser/index.js",
     "./src/utilities.js": "./es/src/utilities.js",
