@@ -7,6 +7,7 @@ export default class LoggerBrowser extends Logger {
   ) {
     super(name, {
       root: null,
+      callbacks: null,
       ...options,
       console: window.console,
     });
