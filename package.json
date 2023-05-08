@@ -31,7 +31,7 @@
     "schema.out/**/*.{js,map,d.ts}",
     "node/**/*.{js,map,d.ts}"
   ],
-  "version": "0.0.4",
+  "version": "0.0.5",
   "license": "MIT",
   "name": "logout-js"
 }
