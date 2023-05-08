@@ -37,6 +37,7 @@
     "schema.out/**/*.{js,map,d.ts}",
     "node/**/*.{js,map,d.ts}"
   ],
+  "main": "./src/index.js",
   "version": "0.0.8",
   "license": "MIT",
   "name": "@victorqueiroz/logger",
