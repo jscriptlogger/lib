@@ -1194,6 +1194,17 @@ glob-parent@^6.0.2:
   dependencies:
     is-glob "^4.0.3"
 
+glob@10.x, glob@^10.2.2:
+  version "10.2.2"
+  resolved "https://registry.yarnpkg.com/glob/-/glob-10.2.2.tgz#ce2468727de7e035e8ecf684669dc74d0526ab75"
+  integrity sha512-Xsa0BcxIC6th9UwNjZkhrMtNo/MnyRL8jGCP+uEwhA5oFOCY1f2s1/oNKY47xQ0Bg5nkjsfAEIej1VeH62bDDQ==
+  dependencies:
+    foreground-child "^3.1.0"
+    jackspeak "^2.0.3"
+    minimatch "^9.0.0"
+    minipass "^5.0.0"
+    path-scurry "^1.7.0"
+
 glob@8.x:
   version "8.1.0"
   resolved "http://localhost:4873/glob/-/glob-8.1.0.tgz#d388f656593ef708ee3e34640fdfb99a9fd1c33e"
@@ -1204,17 +1215,6 @@ glob@8.x:
     inherits "2"
     minimatch "^5.0.1"
     once "^1.3.0"
-
-glob@^10.2.2:
-  version "10.2.2"
-  resolved "https://registry.yarnpkg.com/glob/-/glob-10.2.2.tgz#ce2468727de7e035e8ecf684669dc74d0526ab75"
-  integrity sha512-Xsa0BcxIC6th9UwNjZkhrMtNo/MnyRL8jGCP+uEwhA5oFOCY1f2s1/oNKY47xQ0Bg5nkjsfAEIej1VeH62bDDQ==
-  dependencies:
-    foreground-child "^3.1.0"
-    jackspeak "^2.0.3"
-    minimatch "^9.0.0"
-    minipass "^5.0.0"
-    path-scurry "^1.7.0"
 
 glob@^7.1.3, glob@^7.1.4, glob@^7.1.6:
   version "7.2.3"
@@ -1772,6 +1772,13 @@ package-hash@^4.0.0:
     hasha "^5.0.0"
     lodash.flattendeep "^4.4.0"
     release-zalgo "^1.0.0"
+
+package-utilities@^0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/package-utilities/-/package-utilities-0.0.6.tgz#ca7f7c3a01c8c663ccc60fa1819e201323bba765"
+  integrity sha512-LmHK/c3dFCgX+zEcjq4Iroks+m6G01+iMCQ2FMXFt/MR6pYexRKtZFci1Sn4LUhA3o1e0MV8gRnJRyJBzWilWA==
+  dependencies:
+    glob "10.x"
 
 parent-module@^1.0.0:
   version "1.0.1"
