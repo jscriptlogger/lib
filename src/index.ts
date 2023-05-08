@@ -15,6 +15,10 @@ const separator = '/';
 export interface ILoggerOptions {
   root: Logger | null;
   console: ILoggerConsole;
+  /**
+   * no matter what callbacks
+   */
+  callbacks: ILoggerConsole | null;
 }
 
 function keyToString(key: string[]) {
@@ -55,29 +59,33 @@ export default class Logger implements ILogger {
     this.#name = Array.isArray(name) ? name : [name];
     this.#logLevel = options.logLevel ?? LogLevel.Error;
     this.#options = {
+      callbacks: options.callbacks,
       root: options.root,
       console: options.console,
     };
   }
   public log(...args: unknown[]) {
+    this.#maybePrependName(args);
+    this.#options.callbacks?.log(...args);
     if (!this.#enabled(LogLevel.Log)) {
       return;
     }
-    this.#maybePrependName(args);
     this.#options.console.log(...args);
   }
   public error(...args: unknown[]) {
+    this.#maybePrependName(args);
+    this.#options.callbacks?.error(...args);
     if (!this.#enabled(LogLevel.Error)) {
       return;
     }
-    this.#maybePrependName(args);
     this.#options.console.error(...args);
   }
   public debug(...args: unknown[]) {
+    this.#maybePrependName(args);
+    this.#options.callbacks?.debug(...args);
     if (!this.#enabled(LogLevel.Debug)) {
       return;
     }
-    this.#maybePrependName(args);
     this.#options.console.debug(...args);
   }
   public disable(...name: string[]) {
