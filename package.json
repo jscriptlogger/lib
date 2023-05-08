@@ -1,6 +1,6 @@
 {
   "devDependencies": {
-    "@istanbuljs/nyc-config-typescript": "1.x",
+    "@istanbuljs/nyc-config-typescript": "^1.0.2",
     "@types/chai": "4.x",
     "@types/node": "18.x",
     "@types/sinon": "10.x",
@@ -8,6 +8,7 @@
     "@typescript-eslint/parser": "^5.59.2",
     "chai": "4.x",
     "eslint": "8.x",
+    "glob": "^10.2.2",
     "nyc": "15.x",
     "prettier": "2.x",
     "sarg": "5.x",
@@ -21,11 +22,10 @@
     "long": "5.x"
   },
   "scripts": {
-    "test": "TS_NODE_PROJECT=test/tsconfig.json npx sarg --bail --require ts-node/register \"test/**/*.ts\"",
-    "test:coverage": "npx nyc --exclude-node-modules yarn test",
-    "schema": "yarn run schema:build && yarn run schema:lint",
-    "schema:build": "npx jsbuffer schema -o schema.out --extends tsconfig.base.json --indentation-size 2",
-    "schema:lint": "npx prettier --write schema.out",
+    "test": "yarn run test:clear && yarn run test:only",
+    "test:only": "TS_NODE_PROJECT=test/tsconfig.json npx sarg --require ts-node/register --bail \"test/**/*.ts\"",
+    "test:clear": "TS_NODE_PROJECT=scripts/tsconfig.json npx ts-node scripts/clear-generated-files.ts",
+    "test:coverage": "npx nyc yarn test",
     "prepublishOnly": "npx tsc -b node browser src --force"
   },
   "files": [
@@ -33,7 +33,7 @@
     "schema.out/**/*.{js,map,d.ts}",
     "node/**/*.{js,map,d.ts}"
   ],
-  "version": "0.0.9",
+  "version": "0.0.2",
   "license": "MIT",
-  "name": "js-log-time"
+  "name": "logout-js"
 }

@@ -1,15 +1,20 @@
 import { arrayStartsWith } from './utilities';
 
-export interface ILogger {
+export interface ILoggerConsole {
   log(...data: unknown[]): void;
+  debug(...data: unknown[]): void;
   error(...data: unknown[]): void;
+}
+
+export interface ILogger extends ILoggerConsole {
+  at(...name: string[]): ILogger;
 }
 
 const separator = '/';
 
 export interface ILoggerOptions {
   root: Logger | null;
-  console: ILogger;
+  console: ILoggerConsole;
 }
 
 function keyToString(key: string[]) {
@@ -25,31 +30,55 @@ export function checkPermission(set: Set<string>, name: string[]) {
   return false;
 }
 
+export enum LogLevel {
+  None = 0,
+  Error = 1,
+  Log = 2,
+  Debug = 3,
+}
+
 export default class Logger implements ILogger {
   readonly #children = new Map<string, Logger>();
   readonly #name;
   readonly #options: ILoggerOptions;
+  readonly #logLevel;
   readonly #permissions = {
     disabled: new Set<string>(),
     enabled: new Set<string>(),
   };
-  public constructor(name: string | string[], options: ILoggerOptions) {
+  public constructor(
+    name: string | string[],
+    options: ILoggerOptions & {
+      logLevel?: LogLevel;
+    }
+  ) {
     this.#name = Array.isArray(name) ? name : [name];
-    this.#options = options;
+    this.#logLevel = options.logLevel ?? LogLevel.Error;
+    this.#options = {
+      root: options.root,
+      console: options.console,
+    };
   }
   public log(...args: unknown[]) {
-    if (!this.#enabled()) {
+    if (!this.#enabled(LogLevel.Log)) {
       return;
     }
     this.#maybePrependName(args);
     this.#options.console.log(...args);
   }
   public error(...args: unknown[]) {
-    if (!this.#enabled()) {
+    if (!this.#enabled(LogLevel.Error)) {
       return;
     }
     this.#maybePrependName(args);
     this.#options.console.error(...args);
+  }
+  public debug(...args: unknown[]) {
+    if (!this.#enabled(LogLevel.Debug)) {
+      return;
+    }
+    this.#maybePrependName(args);
+    this.#options.console.debug(...args);
   }
   public disable(...name: string[]) {
     this.#permissions.disabled.add(keyToString([...this.#name, ...name]));
@@ -74,12 +103,13 @@ export default class Logger implements ILogger {
   #root() {
     return this.#options.root ?? this;
   }
-  #enabled() {
+  #enabled(logLevel: LogLevel) {
     const root = this.#root();
+    let result = logLevel <= this.#root().#logLevel;
     if (checkPermission(root.#permissions.disabled, this.#name)) {
-      return checkPermission(root.#permissions.enabled, this.#name);
+      result = result && checkPermission(root.#permissions.enabled, this.#name);
     }
-    return true;
+    return result;
   }
   #maybePrependName(args: unknown[]) {
     const [firstArg] = args;

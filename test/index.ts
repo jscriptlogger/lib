@@ -1,5 +1,5 @@
 import { Suite } from 'sarg';
-import LoggerNode, { checkPermission } from '../src';
+import LoggerNode, { LogLevel, checkPermission } from '../src';
 import { spy } from 'sinon';
 import { expect } from 'chai';
 
@@ -8,6 +8,7 @@ const suite = new Suite();
 function createSpiedConsole() {
   return {
     error: spy((..._: unknown[]) => {}),
+    debug: spy((..._: unknown[]) => {}),
     log: spy((..._: unknown[]) => {}),
   };
 }
@@ -16,6 +17,7 @@ suite.test('it should append name if first argument is a string', () => {
   const customConsole = createSpiedConsole();
   const logger = new LoggerNode(['a'], {
     root: null,
+    logLevel: LogLevel.Log,
     console: customConsole,
   });
   logger.log('A');
@@ -26,7 +28,7 @@ suite.test('it should deal with deep loggers', () => {
   const customConsole = createSpiedConsole();
   const logger = new LoggerNode(['A'], {
     root: null,
-
+    logLevel: LogLevel.Log,
     console: customConsole,
   });
   logger.at('1', '2', '3').at('4', '5', '6').log('A');
@@ -76,6 +78,7 @@ suite.test(
     const customConsole = createSpiedConsole();
     const logger = new LoggerNode(['A1'], {
       root: null,
+      logLevel: LogLevel.Log,
       console: customConsole,
     });
     logger.disable('B1', 'C1', 'D1');
@@ -94,6 +97,7 @@ suite.test(
     const customConsole = createSpiedConsole();
     const logger = new LoggerNode(['A0'], {
       root: null,
+      logLevel: LogLevel.Log,
       console: customConsole,
     });
     logger.log(1);
@@ -133,6 +137,35 @@ suite.test(
       root: null,
       console: createSpiedConsole(),
     });
+  }
+);
+
+suite.test(
+  'Logger#debug: it should allow constructing logger instances that will have debug log levels enabled by default',
+  () => {
+    const customConsole = createSpiedConsole();
+    const logger = new LoggerNode('A0', {
+      root: null,
+      logLevel: LogLevel.Debug,
+      console: customConsole,
+    });
+    logger.debug('a', 'b');
+    expect(customConsole.debug.calledOnceWithExactly('A0: a', 'b')).to.be.true;
+  }
+);
+
+suite.test(
+  'Logger#debug: it should not call "debug" if it\'s manually disabled',
+  () => {
+    const customConsole = createSpiedConsole();
+    const logger = new LoggerNode('A0', {
+      root: null,
+      logLevel: LogLevel.Debug,
+      console: customConsole,
+    });
+    logger.disable();
+    logger.at('B0', 'C0').debug('a', 'b');
+    expect(customConsole.debug.notCalled).to.be.true;
   }
 );
 
