@@ -8,7 +8,6 @@ export default class LoggerNode extends Logger {
   ) {
     super(name, {
       root: null,
-      callbacks: null,
       ...options,
       console,
     });
