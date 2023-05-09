@@ -768,9 +768,9 @@ clean-stack@^2.0.0:
   integrity sha512-4diC9HaTE+KRAMWhDhrGOECgWZxoevMc5TlkObMqNSsVU62PYzXZ/SMTjzyGAFF1YusgxGcSWTEXBhp0CPwQ1A==
 
 cli-argument-helper@0.x:
-  version "0.0.6"
-  resolved "http://localhost:4873/cli-argument-helper/-/cli-argument-helper-0.0.6.tgz#c81400c623cb4ff7162c321a2fb9c59a203416c4"
-  integrity sha512-EDmIe5ErRyBvPW5dUKKqI2jDYiOlrwx4USDtWz9ERmDqewSj8YdhXLvuPo7oUQSkKbb4aFgTnk7LkGgPoHDtkQ==
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/cli-argument-helper/-/cli-argument-helper-0.0.8.tgz#64be199c93609f91b38517ca00d95021bd82827b"
+  integrity sha512-LeJLmEkUNXVfFpaxpll5VAQJHph2+QYMPE6445fLbe3YG89ckRp88yjdQ62hTpTCzQFBjg/opy6wbnYSgK1gxA==
 
 cliui@^6.0.0:
   version "6.0.0"
@@ -822,7 +822,7 @@ convert-source-map@^1.7.0:
 
 crc@4.x:
   version "4.3.2"
-  resolved "http://localhost:4873/crc/-/crc-4.3.2.tgz#49b7821cbf2cf61dfd079ed93863bbebd5469b9a"
+  resolved "https://registry.yarnpkg.com/crc/-/crc-4.3.2.tgz#49b7821cbf2cf61dfd079ed93863bbebd5469b9a"
   integrity sha512-uGDHf4KLLh2zsHa8D8hIQ1H/HtFQhyHrc0uhHBcoKGol/Xnb+MPYfUMw7cvON6ze/GUESTudKayDcJC5HnJv1A==
 
 create-require@^1.1.0:
@@ -1475,9 +1475,9 @@ js-yaml@^4.1.0:
     argparse "^2.0.1"
 
 jsbuffer@0.x:
-  version "0.0.33"
-  resolved "http://localhost:4873/jsbuffer/-/jsbuffer-0.0.33.tgz#f6cb59fb8d7f3dfe233a24ce66394043e5cb9b64"
-  integrity sha512-sa9PibMNlnsh0S2GeriIdg6pM/mOBmRdzoU2A4ba3xSN7OwB+6Z9fwJjRVHAcFlcynnCnymJAN3oPPT593JmDg==
+  version "0.0.39"
+  resolved "https://registry.yarnpkg.com/jsbuffer/-/jsbuffer-0.0.39.tgz#c2f281122a23ed49c7047639789bbf5992b81041"
+  integrity sha512-WAOxFtoOh93qU3qtRpOXrPiJsPEc5tmVpjeZFiHdHiZSGkHtTwAIKm92Onv5MrlAOYWNEf97BNDgkdaQUl4/4Q==
   dependencies:
     cli-argument-helper "0.x"
     crc "4.x"
@@ -2102,7 +2102,7 @@ text-table@^0.2.0:
 
 textstreamjs@0.x:
   version "0.0.4"
-  resolved "http://localhost:4873/textstreamjs/-/textstreamjs-0.0.4.tgz#9b879fb7b950c845215cacdf08ee6458f65f7fd2"
+  resolved "https://registry.yarnpkg.com/textstreamjs/-/textstreamjs-0.0.4.tgz#9b879fb7b950c845215cacdf08ee6458f65f7fd2"
   integrity sha512-kp2S5F1IAceUgtYmHvENzDbPSLlNTBw9REAz3QOCEm08Q7rGsu/4zf6sw0dfAlB3nT61oBtVB6S4AYweVspzUg==
 
 to-fast-properties@^2.0.0:
