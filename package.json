@@ -34,6 +34,7 @@
   },
   "files": [
     "src/**/*.{js,map,d.ts}",
+    "es/**/*.{js,map,d.ts}",
     "schema.out/**/*.{js,map,d.ts}",
     "node/**/*.{js,map,d.ts}"
   ],
