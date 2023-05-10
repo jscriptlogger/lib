@@ -19,7 +19,6 @@ suite.test('it should append name if first argument is a string', () => {
     root: null,
     logLevel: LogLevel.Log,
     console: customConsole,
-    callbacks: null,
   });
   logger.log('A');
   expect(customConsole.log.calledWithExactly('a: A')).to.be.ok;
@@ -31,7 +30,6 @@ suite.test('it should deal with deep loggers', () => {
     root: null,
     logLevel: LogLevel.Log,
     console: customConsole,
-    callbacks: null,
   });
   logger.at('1', '2', '3').at('4', '5', '6').log('A');
   expect(customConsole.log.calledWithExactly('A/1/2/3/4/5/6: A')).to.be.ok;
@@ -44,7 +42,6 @@ suite.test(
     const logger = new LoggerNode(['A'], {
       root: null,
       console: customConsole,
-      callbacks: null,
     });
     expect(logger.at('1', '2', '3')).to.be.equal(logger.at('1', '2', '3'));
     expect(logger.at('1', '2', '3').at('4', '5', '6')).to.be.equal(
@@ -58,7 +55,6 @@ suite.test('it should disable specific long path', () => {
   const logger = new LoggerNode(['A1'], {
     root: null,
     console: customConsole,
-    callbacks: null,
   });
   logger.disable('B1', 'C1', 'D1');
   logger.at('B1', 'C1', 'D1').log('X');
@@ -84,7 +80,6 @@ suite.test(
       root: null,
       logLevel: LogLevel.Log,
       console: customConsole,
-      callbacks: null,
     });
     logger.disable('B1', 'C1', 'D1');
     logger.enable('B1', 'C1', 'D1', 'E1');
@@ -104,7 +99,6 @@ suite.test(
       root: null,
       logLevel: LogLevel.Log,
       console: customConsole,
-      callbacks: null,
     });
     logger.log(1);
     logger.log(2);
@@ -119,7 +113,6 @@ suite.test('Logger#error: it should handle disabled calls', () => {
   const logger = new LoggerNode(['A0'], {
     root: null,
     console: customConsole,
-    callbacks: null,
   });
   logger.disable();
   logger.error(3);
@@ -132,7 +125,6 @@ suite.test('Logger#error: it should prepend logger name', () => {
   const logger = new LoggerNode(['A0'], {
     root: null,
     console: customConsole,
-    callbacks: null,
   });
   logger.at('B0', 'C0', 'D0', 'E0').error('XXXXX');
   expect(customConsole.error.calledOnceWithExactly('A0/B0/C0/D0/E0: XXXXX'));
@@ -144,7 +136,6 @@ suite.test(
     new LoggerNode('A0', {
       root: null,
       console: createSpiedConsole(),
-      callbacks: null,
     });
   }
 );
@@ -157,7 +148,6 @@ suite.test(
       root: null,
       logLevel: LogLevel.Debug,
       console: customConsole,
-      callbacks: null,
     });
     logger.debug('a', 'b');
     expect(customConsole.debug.calledOnceWithExactly('A0: a', 'b')).to.be.true;
@@ -172,7 +162,6 @@ suite.test(
       root: null,
       logLevel: LogLevel.Debug,
       console: customConsole,
-      callbacks: null,
     });
     logger.disable();
     logger.at('B0', 'C0').debug('a', 'b');

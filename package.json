@@ -8,7 +8,7 @@
     "@typescript-eslint/parser": "^5.59.2",
     "chai": "4.x",
     "eslint": "8.x",
-    "glob": "^10.2.2",
+    "glob": "10.x",
     "nyc": "15.x",
     "package-utilities": "^0.0.6",
     "prettier": "2.x",
@@ -30,7 +30,7 @@
     "test": "TS_NODE_PROJECT=test/tsconfig.json npx sarg --require ts-node/register --bail \"test/**/*.ts\" --ignore \"test/**/*.d.ts\"",
     "test:coverage": "npx nyc yarn test",
     "set-es-paths": "npx package-utilities --set-es-paths --include \"{browser,src}/**/*.js\" --es-folder es",
-    "prepublishOnly": "yarn run build && yarn run set-es-paths && npx tsc -b node browser src --force"
+    "prepublishOnly": "yarn run test && yarn run build && yarn run set-es-paths && npx tsc -b node browser src --force"
   },
   "files": [
     "src/**/*.{js,map,d.ts}",
@@ -41,7 +41,7 @@
   "main": "./src/index.js",
   "version": "0.0.13",
   "license": "MIT",
-  "name": "@victorqueiroz/logger",
+  "name": "@jscriptlogger/lib",
   "browser": {
     "./browser/index.js": "./es/browser/index.js",
     "./src/utilities.js": "./es/src/utilities.js",
