@@ -35,11 +35,11 @@
   "files": [
     "src/**/*.{js,map,d.ts}",
     "es/**/*.{js,map,d.ts}",
-    "schema.out/**/*.{js,map,d.ts}",
+    "browser/**/*.{js,map,d.ts}",
     "node/**/*.{js,map,d.ts}"
   ],
   "main": "./src/index.js",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "license": "MIT",
   "name": "@jscriptlogger/lib",
   "browser": {
